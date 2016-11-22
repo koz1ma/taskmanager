@@ -1,0 +1,27 @@
+<div>
+  <table class="table" id="task_list">
+      <thead>
+          <tr><th>Id</th><th>Título</th><th>Descrição</th><th>Prioridade</th><th>Concluido</th><th>Data de criação</th><th>&nbsp;</th></tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="task in tasks" >
+          			<td class='id'>{{task.Task.id}}</td>
+          			<td ng-show="!editable">{{task.Task.title}}</td>
+          			<td ng-show="!editable">{{task.Task.description}}</td>
+          			<td ng-show="!editable">{{task.Task.priority}}</td>
+                <td ng-show="editable"><input id="title" type="text" class="form-control"
+                       required="true" ng-model="task.Task.title"></input></td>
+                <td ng-show="editable"><textarea id="body" class="form-control" rows="10"
+                          ng-model="task.Task.description" required="true"></textarea></td>
+                <td ng-show="editable"><input id="number" type="number" class="form-control"
+                       required="true" ng-model="task.Task.priority" string-to-number></input></td>
+                <td><input id="done" type="checkbox" ng-disabled="!editable" class="form-control" ng-model="task.Task.done"></input></td>
+                <td class='date'>{{task.Task.created_at}}</td>
+          			<td ng-show="!editable"><a class='btn btn-success btn-success' ng-click="editable = !editable">Editar</a></td>
+          			<td ng-show="!editable"><a class='btn btn-delete btn-danger' ng-click="deleteTask(task.Task.id)">Excluir</a></td>          			
+          			<td ng-show="editable"><a class='btn btn-success btn-success' ng-click="editTask(task.Task) ">Salvar</a></td>
+                <td ng-show="editable"><a class='btn btn-success btn-danger' ng-click="editable = !editable ">Cancelar</a></td>
+          </tr>
+      </tbody>
+  </table>
+</div>

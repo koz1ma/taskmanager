@@ -1,0 +1,31 @@
+<div ng-controller="addTaskCtrl">
+    <form  name="taskForm" class="form-horizontal">
+    <h1 class="page-header">Adicionar Tarefa</h1>
+    <fieldset>    
+        <div class="control-group">
+            <label class="control-label" for="title">Título</label>
+            <div class="controls">
+                <input id="title" type="text" class="form-control"
+                       required="true" ng-model="task.title" required></input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="body">Descrição</label>
+            <div class="controls">
+                <textarea id="body" class="form-control" rows="10"
+                          ng-model="task.description" required></textarea>
+            </div>
+        </div>
+         <div class="control-group">
+            <label class="control-label" for="body">Prioridade( em ordem crescente )</label>
+            <div class="controls">
+               	<input id="number" type="number" class="form-control"
+                       required ng-model="task.priority"></input>
+            </div>
+        </div>
+    </fieldset> 
+    <div class="form-actions">           
+        <button class="btn btn-success" ng-click="taskForm.$valid && addTask(task)">Salvar</button>
+    </div>
+    </form>
+</div>
